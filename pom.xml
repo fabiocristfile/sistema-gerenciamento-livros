@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Informações do Projeto Pai -->
+    <groupId>com.myprojeto</groupId>
+    <artifactId>sistema-gerenciamento-livros</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging> <!-- Indica que este é um projeto pai multi-módulo -->
+    <name>Sistema Gerenciamento Livros</name>
+    <description>Projeto para processo seletivo PJ</description>
+
+    <!-- Módulos do Projeto -->
+    <modules>
+        <module>livro-service</module>
+        <module>usuario-service</module>
+        <module>recomendacao-service</module>
+        <module>notificacao-service</module>
+    </modules>
+
+    <!-- Propriedades Globais -->
+    <properties>
+        <java.version>17</java.version>
+        <spring-boot.version>3.3.5</spring-boot.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <!-- Dependências Globais (Herdadas pelos Módulos) -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- Dependência do Spring Boot Starter -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${spring-boot.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- Dependências Comuns (para todos os módulos) -->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- Configuração do Build -->
+    <build>
+        <plugins>
+            <!-- Plugin do Spring Boot -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
